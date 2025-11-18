@@ -4,9 +4,16 @@ board: list[str] = ["","","","","","","","",""]
 # Function responsible for rendering the apropriate value for the current board slot
 def print_slot_content(slot: str, index: int):
     if slot != "":
-        print(slot, end="")
+        print(f" {slot} ", end="")
     else:
-        print(index + 1, end="")
+        print(f" {index + 1} ", end="")
+
+def print_board_sections(cont):
+    if cont % 3 != 0:
+            print("|", end="")
+    else:
+        print("")
+        print("-" * 12)
 
 def render_board(board: list):
     cont: int = 0
@@ -14,10 +21,6 @@ def render_board(board: list):
         cont += 1
 
         print_slot_content(slot, index)
-
-        if cont % 3 != 0:
-            print("/", end="")
-        else:
-            print("\n")
+        print_board_sections(cont)
 
 render_board(board)
