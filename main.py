@@ -13,7 +13,8 @@ def print_board_sections(cont):
             print("|", end="")
     else:
         print("")
-        print("-" * 12)
+        if cont < 7:
+            print("-" * 12)
 
 def render_board(board: list):
     cont: int = 0
@@ -24,3 +25,4 @@ def render_board(board: list):
         print_board_sections(cont)
 
 render_board(board)
+
