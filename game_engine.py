@@ -4,6 +4,13 @@ class GameEngine():
     def __init__(self):
         # Array that represents the game board slots
         self.board: list[str] = ["","","","","","","","",""]
+        self.playerA_name: str = ""
+        self.playerB_name: str = ""
+        print("""
+                -----------
+                TIC TAC TOE
+                -----------
+        """)
 
     # Function responsible for rendering the game board
     def render_board(self):
@@ -33,13 +40,12 @@ class GameEngine():
 
     # Function responsible for rendering the game main screen
     def start_game(self):
-        print("""
-                -----------
-                TIC TAC TOE
-                -----------
-        """)
-
         start = input('Want to play ? ("Yes" to play, "No" to exit): ').strip().upper()
         if start == "YES":
             return True
         return False
+    
+    #Procedure that register the name of the current players
+    def get_names(self):
+        self.playerA_name = input("Type the first player name: ").strip().lower().capitalize()
+        self.playerB_name = input("Type the second player name: ").strip().lower().capitalize()
