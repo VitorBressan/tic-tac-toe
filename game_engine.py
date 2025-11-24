@@ -6,6 +6,7 @@ class GameEngine():
         self.board: list[str] = ["","","","","","","","",""]
         self.playerA_name: str = ""
         self.playerB_name: str = ""
+        self.current_player: str = self.playerA_name
         print("""
                 -----------
                 TIC TAC TOE
@@ -45,7 +46,18 @@ class GameEngine():
             return True
         return False
     
+    def verify_move(self, move):
+        return move
+
     #Procedure that register the name of the current players
     def get_names(self):
         self.playerA_name = input("Type the first player name: ").strip().lower().capitalize()
         self.playerB_name = input("Type the second player name: ").strip().lower().capitalize()
+
+
+    def make_move(self, slot):
+        move = input(f"{self.current_player} where do you want to play ?")
+        if self.verify_move(move):
+            "a"
+        else:
+            "a"
