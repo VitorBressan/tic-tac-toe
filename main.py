@@ -7,5 +7,5 @@ if game.start_game():
     game.render_board()
     
     while True:
-
+        game.make_move()
         

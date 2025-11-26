@@ -47,7 +47,9 @@ class GameEngine():
         return False
     
     def verify_move(self, move):
-        return move
+        if self.board[move - 1] != str(move):
+            return False
+        return True
 
     #Procedure that register the name of the current players
     def get_names(self):
@@ -55,9 +57,23 @@ class GameEngine():
         self.playerB_name = input("Type the second player name: ").strip().lower().capitalize()
 
 
-    def make_move(self, slot):
-        move = input(f"{self.current_player} where do you want to play ?")
-        if self.verify_move(move):
-            "a"
+    def switch_player(self):
+        if self.current_player == self.playerA_name:
+            self.current_player = self.playerB_name
         else:
-            "a"
+            self.current_player = self.playerA_name
+
+    def mark_slot(self):
+        if self.current_player == self.playerA_name:
+            return "X"
+        else:
+            return "O"
+        
+    def make_move(self):
+        move = int(input(f"{self.current_player} where do you want to play ?"))
+        if self.verify_move(move):
+            self.board[move - 1] = self.mark_slot()
+            self.switch_player()
+        else:
+            print("Please choose a valid slot!")
+            self.make_move()
