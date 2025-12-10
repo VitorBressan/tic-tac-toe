@@ -6,7 +6,7 @@ class GameEngine():
         self.board: list[str] = ["","","","","","","","",""]
         self.playerA_name: str = ""
         self.playerB_name: str = ""
-        self.current_player: str = self.playerA_name
+        self.current_player: str = ""
         print("""
                 -----------
                 TIC TAC TOE
@@ -55,7 +55,7 @@ class GameEngine():
     def get_names(self):
         self.playerA_name = input("Type the first player name: ").strip().lower().capitalize()
         self.playerB_name = input("Type the second player name: ").strip().lower().capitalize()
-
+        self.current_player: str = self.playerA_name
 
     def switch_player(self):
         if self.current_player == self.playerA_name:
