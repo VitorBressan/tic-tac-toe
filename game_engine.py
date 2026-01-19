@@ -23,7 +23,9 @@ class GameEngine():
         return False
     
     def is_valid_move(self, move):
-        if self.board[move - 1] != "":
+        if move < 1 or move > 9:
+            return False
+        elif self.board[move - 1] != "":
             return False
         return True
 

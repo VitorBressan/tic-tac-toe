@@ -5,8 +5,8 @@ def ask_for_move():
     while not valid:
         try:
             move = int(input(f"{game.current_player} where do you want to play? ").strip())
-        except:
-            print("Please type a number from 1 to 9")
+        except ValueError:
+            print("Please type a number")
         else:
             valid = True
     return move
