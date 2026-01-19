@@ -46,12 +46,6 @@ def start_game():
         return True
     return False
 
-#Function that register the name of the current players
-def get_names():
-    game.playerA_name = input("Type the first player name: ").strip().lower().capitalize()
-    game.playerB_name = input("Type the second player name: ").strip().lower().capitalize()
-    game.current_player = game.playerA_name
-
 def show_game_logo():
     print("-----------\nTIC TAC TOE\n-----------")
     
@@ -63,8 +57,11 @@ def update_game_screen():
 game = GameEngine()
 if start_game():
     show_game_logo()
-    get_names()
     
+    player1 = input("Type the first player name: ").strip().lower().capitalize()
+    player2 = input("Type the second player name: ").strip().lower().capitalize()
+    game.set_names(player1, player2)
+
     while True:
         update_game_screen()
         print(f"{game.current_player} turn!")

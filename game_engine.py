@@ -8,6 +8,11 @@ class GameEngine():
         self.playerB_name: str = ""
         self.current_player: str = ""
     
+    def set_names(self, player1_name, player2_name):
+        self.playerA_name = player1_name
+        self.playerB_name = player2_name
+        self.current_player = self.playerA_name
+
     def is_valid_move(self, move):
         if move < 1 or move > 9:
             return False
@@ -68,5 +73,5 @@ class GameEngine():
         for slot in self.board:
             if slot == "":
                 return False
-        
+
         return True
