@@ -11,12 +11,36 @@ def ask_for_move():
             valid = True
     return move
 
+# Function responsible for rendering the game board
+def render_board(board_data):
+
+    # Function responsible for rendering the apropriate value for the current board slot
+    def print_slot_content(slot: str, index: int):
+        if slot != "":
+            print(f" {slot} ", end="")
+        else:
+            print(f" {index + 1} ", end="")
+
+    # Function responsible for rendering the sections divisors of the board
+    def print_board_sections(cont):
+        if cont % 3 != 0:
+                print("|", end="")
+        else:
+            print("")
+            if cont < 7:
+                print("-" * 12)
+    cont: int = 0
+    for index, slot in enumerate(board_data):
+        cont += 1
+        print_slot_content(slot, index)
+        print_board_sections(cont)
+
 game = GameEngine()
 if game.start_game():
     game.get_names()
     
     while True:
-        game.render_board()
+        render_board(game.board)
         print(f"{game.current_player} turn!")
         
         move_done = False
