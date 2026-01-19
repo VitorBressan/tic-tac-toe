@@ -1,4 +1,8 @@
 from game_engine import GameEngine
+import os
+
+def clear_terminal():
+    os.system("cls" if os.name == "nt" else "clear")
 
 def ask_for_move():
     valid = False
@@ -35,11 +39,24 @@ def render_board(board_data):
         print_slot_content(slot, index)
         print_board_sections(cont)
 
+# Function responsible for rendering the game main screen
+def start_game():
+    start = input('Want to play ? ("Yes" to play, "No" to exit): ').strip().upper()
+    if start == "YES":
+        return True
+    return False
+
+def show_game_logo():
+    print("-----------\nTIC TAC TOE\n-----------")
+    
 game = GameEngine()
-if game.start_game():
+if start_game():
+    show_game_logo()
     game.get_names()
     
     while True:
+        clear_terminal()
+        show_game_logo()
         render_board(game.board)
         print(f"{game.current_player} turn!")
         

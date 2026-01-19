@@ -7,20 +7,6 @@ class GameEngine():
         self.playerA_name: str = ""
         self.playerB_name: str = ""
         self.current_player: str = ""
-
-    
-
-    # Method responsible for rendering the game main screen
-    def start_game(self):
-        print("""
-                -----------
-                TIC TAC TOE
-                -----------
-        """)
-        start = input('Want to play ? ("Yes" to play, "No" to exit): ').strip().upper()
-        if start == "YES":
-            return True
-        return False
     
     def is_valid_move(self, move):
         if move < 1 or move > 9:
