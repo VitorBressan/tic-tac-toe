@@ -15,12 +15,6 @@ class GameEngine():
             return False
         return True
 
-    #Method that register the name of the current players
-    def get_names(self):
-        self.playerA_name = input("Type the first player name: ").strip().lower().capitalize()
-        self.playerB_name = input("Type the second player name: ").strip().lower().capitalize()
-        self.current_player = self.playerA_name
-
     def switch_player(self):
         if self.current_player == self.playerA_name:
             self.current_player = self.playerB_name
