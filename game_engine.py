@@ -7,13 +7,8 @@ class GameEngine():
         self.playerA_name: str = ""
         self.playerB_name: str = ""
         self.current_player: str = ""
-        print("""
-                -----------
-                TIC TAC TOE
-                -----------
-        """)
 
-    # Function responsible for rendering the game board
+    # Method responsible for rendering the game board
     def render_board(self):
 
         # Function responsible for rendering the apropriate value for the current board slot
@@ -39,23 +34,28 @@ class GameEngine():
             print_slot_content(slot, index)
             print_board_sections(cont)
 
-    # Function responsible for rendering the game main screen
+    # Method responsible for rendering the game main screen
     def start_game(self):
+        print("""
+                -----------
+                TIC TAC TOE
+                -----------
+        """)
         start = input('Want to play ? ("Yes" to play, "No" to exit): ').strip().upper()
         if start == "YES":
             return True
         return False
     
-    def verify_move(self, move):
-        if self.board[move - 1] != str(move):
+    def is_valid_move(self, move):
+        if self.board[move - 1] != "":
             return False
         return True
 
-    #Procedure that register the name of the current players
+    #Method that register the name of the current players
     def get_names(self):
         self.playerA_name = input("Type the first player name: ").strip().lower().capitalize()
         self.playerB_name = input("Type the second player name: ").strip().lower().capitalize()
-        self.current_player: str = self.playerA_name
+        self.current_player = self.playerA_name
 
     def switch_player(self):
         if self.current_player == self.playerA_name:
@@ -69,11 +69,12 @@ class GameEngine():
         else:
             return "O"
         
-    def make_move(self):
-        move = int(input(f"{self.current_player} where do you want to play ?"))
-        if self.verify_move(move):
+    def make_move(self, move):
+        if self.is_valid_move(move):
             self.board[move - 1] = self.mark_slot()
-            self.switch_player()
+            return True
         else:
-            print("Please choose a valid slot!")
-            self.make_move()
+            return False
+        
+
+        
