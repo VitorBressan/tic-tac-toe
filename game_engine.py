@@ -63,3 +63,10 @@ class GameEngine():
         
         else:
             return False
+        
+    def check_for_drawn(self):
+        for slot in self.board:
+            if slot == "":
+                return False
+        
+        return True

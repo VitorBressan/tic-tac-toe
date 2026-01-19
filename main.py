@@ -55,15 +55,18 @@ def get_names():
 def show_game_logo():
     print("-----------\nTIC TAC TOE\n-----------")
     
+def update_game_screen():
+    clear_terminal()
+    show_game_logo()
+    render_board(game.board)
+
 game = GameEngine()
 if start_game():
     show_game_logo()
     get_names()
     
     while True:
-        clear_terminal()
-        show_game_logo()
-        render_board(game.board)
+        update_game_screen()
         print(f"{game.current_player} turn!")
         
         move_done = False
@@ -77,7 +80,12 @@ if start_game():
                 print("Invalid Move! Please choose a valid slot!")
 
         if game.check_for_win():
+            update_game_screen()
             print(f"CONGRATULATIONS {game.current_player}! YOU'VE WON!")
+            break
+        elif game.check_for_drawn():
+            update_game_screen()
+            print("THE GAME HAS COME TO A DRAW!")
             break
 
         game.switch_player()
