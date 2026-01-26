@@ -1,4 +1,4 @@
-from game_engine import GameEngine
+from tictactoe.game_engine import GameEngine
 import os
 
 def clear_terminal():
@@ -54,13 +54,13 @@ def update_game_screen():
     show_game_logo()
     render_board(game.board)
 
-game = GameEngine()
+
 if start_game():
     show_game_logo()
     
     player1 = input("Type the first player name: ").strip().lower().capitalize()
     player2 = input("Type the second player name: ").strip().lower().capitalize()
-    game.set_names(player1, player2)
+    game = GameEngine(player1, player2)
 
     while True:
         update_game_screen()

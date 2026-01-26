@@ -1,18 +1,12 @@
 
 
 class GameEngine():
-    def __init__(self):
+    def __init__(self, nameA, nameB):
         # Array that represents the game board slots
         self.board: list[str] = ["","","","","","","","",""]
-        self.playerA_name: str = ""
-        self.playerB_name: str = ""
-        self.current_player: str = ""
-        self.moves_done: dict = {}
-    
-    def set_names(self, player1_name, player2_name):
-        self.playerA_name = player1_name
-        self.playerB_name = player2_name
-        self.current_player = self.playerA_name
+        self.playerA_name: str = nameA
+        self.playerB_name: str = nameB
+        self.current_player: str = self.playerA_name
         self.moves_done = {
             self.playerA_name: [],
             self.playerB_name: []
