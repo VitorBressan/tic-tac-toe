@@ -13,9 +13,9 @@ class GameEngine():
         }
 
     def is_valid_move(self, move):
-        if move < 1 or move > 9:
+        if move < 0 or move > len(self.board):
             return False
-        elif self.board[move - 1] != "":
+        elif self.board[move] != "":
             return False
         return True
 
@@ -33,7 +33,7 @@ class GameEngine():
         
     def make_move(self, move):
         if self.is_valid_move(move):
-            self.board[move - 1] = self.mark_slot()
+            self.board[move] = self.mark_slot()
             self.moves_done[self.current_player].append(move)
             return True
         else:
