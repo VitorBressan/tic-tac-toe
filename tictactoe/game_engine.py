@@ -1,6 +1,20 @@
 
 
 class GameEngine():
+    WIN_COMBINATIONS = [
+            # lines
+            {0, 1, 2},
+            {3, 4, 5},
+            {6, 7, 8},
+            #columns
+            {0, 3, 6},
+            {1, 4, 7},
+            {2, 5, 8},
+            #diagonals
+            {0, 4, 8},
+            {2, 4, 6}
+        ]
+    
     def __init__(self, nameA, nameB):
         # Array that represents the game board slots
         self.board: list[str] = ["","","","","","","","",""]
@@ -39,26 +53,13 @@ class GameEngine():
         else:
             return False
     
-    def check_for_win(self):
-        win_combinations = [
-            # lines
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9},
-            #columns
-            {1, 4, 7},
-            {2, 5, 8},
-            {3, 6, 9},
-            #diagonals
-            {1, 5, 9},
-            {3, 5, 7}
-        ]
-        
-        for combo in win_combinations:
-            if combo.issubset(self.moves_done[self.current_player]):
-                return True
-        
-        return False
+    def detect_winner(self):
+        for combo in self.WIN_COMBINATIONS:
+            if combo.issubset(self.moves_done[self.playerA_name]):
+                return self.playerA_name
+            if combo.issubset(self.moves_done[self.playerB_name]):
+                return self.playerB_name
+        return None
         
     def check_for_drawn(self):
         for slot in self.board:
@@ -66,3 +67,12 @@ class GameEngine():
                 return False
 
         return True
+    
+    def check_game_status(self):
+        winner = self.detect_winner()
+        if winner:
+            return ("win", winner)
+        if self.check_for_drawn():
+            return ('draw', None)
+        
+        return ('ongoing', None)

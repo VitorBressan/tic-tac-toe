@@ -1,8 +1,9 @@
 from .game_engine import GameEngine
 import os
 
+BOARD_SIZE = 9
 MIN_POSITION = 1
-MAX_POSITION = 9
+MAX_POSITION = BOARD_SIZE
 
 # Clears the terminal
 def clear_terminal():
@@ -86,14 +87,17 @@ if start_game():
             else:
                 print("Invalid Move! Please choose a valid slot!")
 
-        # Check if the game has ended.
-        if game.check_for_win():
-            update_game_screen()
-            print(f"CONGRATULATIONS {game.current_player}! YOU'VE WON!")
-            break
-        elif game.check_for_drawn():
-            update_game_screen()
-            print("THE GAME HAS COME TO A DRAW!")
-            break
+        # Check game status.
+        game_status = game.check_game_status()
+        match game_status[0]:
+            case 'win':
+                update_game_screen()
+                print(f"CONGRATULATIONS {game_status[1]}! YOU'VE WON!")
+                break
+
+            case 'drawn':
+                update_game_screen()
+                print("THE GAME HAS COME TO A DRAW!")
+                break
 
         game.switch_player()
