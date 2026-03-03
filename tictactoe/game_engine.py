@@ -22,8 +22,8 @@ class GameEngine():
         self.playerB_name: str = nameB
         self.current_player: str = self.playerA_name
         self.moves_done = {
-            self.playerA_name: [],
-            self.playerB_name: []
+            self.playerA_name: set(),
+            self.playerB_name: set()
         }
 
     def is_valid_move(self, move):
@@ -48,7 +48,7 @@ class GameEngine():
     def make_move(self, move):
         if self.is_valid_move(move):
             self.board[move] = self.mark_slot()
-            self.moves_done[self.current_player].append(move)
+            self.moves_done[self.current_player].add(move)
             return True
         else:
             return False
