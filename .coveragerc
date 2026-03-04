@@ -1,0 +1,3 @@
+[run]
+omit =
+    tictactoe/__main__.py
