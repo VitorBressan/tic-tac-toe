@@ -1,9 +1,7 @@
 # TicTacToe
 
-<p align="center">
 [![Run Tests](https://github.com/VitorBressan/tic-tac-toe/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/VitorBressan/tic-tac-toe/actions/workflows/tests.yml)
 ![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
-</p>
 
 A command-line Tic Tac Toe game built with clean architecture principles, strong separation of concerns, and 100% test coverage using pytest.
 
