@@ -4,7 +4,7 @@ A command-line Tic Tac Toe game built with clean architecture principles, strong
 
 This project focuses on code quality, testability, and maintainability rather than complexity.
 
-## Key Highlights
+## 🚀 Key Highlights
 
 * Object-Oriented Design
 * Clear separation between game logic and interface
@@ -14,11 +14,11 @@ This project focuses on code quality, testability, and maintainability rather th
 * Clean and scalable project structure
 * No external runtime dependencies (pure Python implementation)
 
-## Architecture Overview
+## 🏗 Architecture Overview
 
 The project is divided into two main layers:
 
-### 1️: Game Engine
+### 1️⃣ Game Engine
 
 Responsible for:
 
@@ -30,7 +30,7 @@ Responsible for:
 
 The engine contains no input/output logic, making it fully deterministic and easy to test.
 
-### 2️: CLI Interface
+### 2️⃣ CLI Interface
 
 Responsible for:
 
