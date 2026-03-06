@@ -19,9 +19,12 @@ class GameEngine:
         self.playerA_name: str = nameA
         self.playerB_name: str = nameB
         self.current_player: str = self.playerA_name
-        self.moves_done: dict[str, set[int]] = {self.playerA_name: set(), self.playerB_name: set()}
+        self.moves_done: dict[str, set[int]] = {
+            self.playerA_name: set(),
+            self.playerB_name: set(),
+        }
 
-    def is_valid_move(self, move: int) -> bool: 
+    def is_valid_move(self, move: int) -> bool:
         if move < 0 or move >= len(self.board):
             return False
         elif self.board[move] != "":
