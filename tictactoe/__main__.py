@@ -1,16 +1,19 @@
-from .game_engine import GameEngine
 import os
+
+from .game_engine import GameEngine
 
 BOARD_SIZE = 9
 MIN_POSITION = 1
 MAX_POSITION = BOARD_SIZE
 
-# Clears the terminal
+
 def clear_terminal():
+    """Clears the terminal"""
     os.system("cls" if os.name == "nt" else "clear")
 
-# Ask the player where he wants to play and returns a valid 0-based answear.
+
 def get_board_index_from_input():
+    """Ask the player where he wants to play and returns a valid 0-based answear."""
     while True:
         try:
             move = int(input().strip())
@@ -24,20 +27,24 @@ def get_board_index_from_input():
 
         return move - 1
 
-# Function responsible for rendering the game board.
-def render_board(board_data):
 
-    # Function responsible for rendering the apropriate value for the current board slot.
+def render_board(board_data):
+    """Function responsible for rendering the game board"""
+
     def print_slot_content(slot: str, index: int):
+        """
+        Function responsible for rendering the
+        appropriate value for the current board slot.
+        """
         if slot != "":
             print(f" {slot} ", end="")
         else:
             print(f" {index + 1} ", end="")
 
-    # Function responsible for rendering the sections divisors of the board.
     def print_board_sections(cont):
+        """Function responsible for rendering the sections divisors of the board."""
         if cont % 3 != 0:
-                print("|", end="")
+            print("|", end="")
         else:
             print("")
             if cont < 7:
@@ -49,6 +56,7 @@ def render_board(board_data):
         print_slot_content(slot, index)
         print_board_sections(cont)
 
+
 # Ask the player if he wants to play the game.
 def start_game():
     start = input('Want to play ? ("Yes" to play, "No" to exit): ').strip().upper()
@@ -56,9 +64,11 @@ def start_game():
         return True
     return False
 
+
 # Prints the game logo.
 def show_game_logo():
     print("-----------\nTIC TAC TOE\n-----------")
+
 
 # Update the game interface on the terminal.
 def update_game_screen():
@@ -69,7 +79,7 @@ def update_game_screen():
 
 if start_game():
     show_game_logo()
-    
+
     player1 = input("Type the first player name: ").strip().lower().capitalize()
     player2 = input("Type the second player name: ").strip().lower().capitalize()
     game = GameEngine(player1, player2)
@@ -77,25 +87,25 @@ if start_game():
     while True:
         update_game_screen()
         print(f"{game.current_player} turn!")
-        
+
         while True:
             print(f"{game.current_player} where do you want to play ?")
             move = get_board_index_from_input()
             # Cheks if the move is valid in the game context.
             if game.make_move(move):
-                break 
+                break
             else:
                 print("Invalid Move! Please choose a valid slot!")
 
         # Check game status.
         game_status = game.check_game_status()
         match game_status[0]:
-            case 'win':
+            case "win":
                 update_game_screen()
                 print(f"CONGRATULATIONS {game_status[1]}! YOU'VE WON!")
                 break
 
-            case 'drawn':
+            case "drawn":
                 update_game_screen()
                 print("THE GAME HAS COME TO A DRAW!")
                 break

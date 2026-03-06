@@ -1,12 +1,15 @@
-from tictactoe.game_engine import GameEngine
 import pytest
+
+from tictactoe.game_engine import GameEngine
 
 nameA = "Player A"
 nameB = "Player B"
 
+
 @pytest.fixture
 def game():
     return GameEngine(nameA, nameB)
+
 
 def test_full_game_win(game):
     # A
@@ -36,7 +39,7 @@ def test_full_game_win(game):
 
 
 def test_full_game_draw(game):
-    moves = [0,1,2,4,3,5,7,6,8]
+    moves = [0, 1, 2, 4, 3, 5, 7, 6, 8]
     for move in moves:
         game.make_move(move)
         status = game.check_game_status()
