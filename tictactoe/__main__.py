@@ -7,12 +7,12 @@ MIN_POSITION = 1
 MAX_POSITION = BOARD_SIZE
 
 
-def clear_terminal():
+def clear_terminal() -> None:
     """Clears the terminal"""
     os.system("cls" if os.name == "nt" else "clear")
 
 
-def get_board_index_from_input():
+def get_board_index_from_input() -> int:
     """Ask the player where he wants to play and returns a valid 0-based answear."""
     while True:
         try:
@@ -28,10 +28,10 @@ def get_board_index_from_input():
         return move - 1
 
 
-def render_board(board_data):
+def render_board(board_data: list[str]) -> None:
     """Function responsible for rendering the game board"""
 
-    def print_slot_content(slot: str, index: int):
+    def print_slot_content(slot: str, index: int) -> None:
         """
         Function responsible for rendering the
         appropriate value for the current board slot.
@@ -41,7 +41,7 @@ def render_board(board_data):
         else:
             print(f" {index + 1} ", end="")
 
-    def print_board_sections(cont):
+    def print_board_sections(cont: int) -> None:
         """Function responsible for rendering the sections divisors of the board."""
         if cont % 3 != 0:
             print("|", end="")
@@ -58,7 +58,7 @@ def render_board(board_data):
 
 
 # Ask the player if he wants to play the game.
-def start_game():
+def start_game() -> bool:
     start = input('Want to play ? ("Yes" to play, "No" to exit): ').strip().upper()
     if start == "YES":
         return True
@@ -66,12 +66,12 @@ def start_game():
 
 
 # Prints the game logo.
-def show_game_logo():
+def show_game_logo() -> None:
     print("-----------\nTIC TAC TOE\n-----------")
 
 
 # Update the game interface on the terminal.
-def update_game_screen():
+def update_game_screen() -> None:
     clear_terminal()
     show_game_logo()
     render_board(game.board)
@@ -105,7 +105,7 @@ if start_game():
                 print(f"CONGRATULATIONS {game_status[1]}! YOU'VE WON!")
                 break
 
-            case "drawn":
+            case "draw":
                 update_game_screen()
                 print("THE GAME HAS COME TO A DRAW!")
                 break

@@ -69,7 +69,7 @@ def test_not_win_situations(combo, game):
 
 def test_check_for_draw(game):
     game.board = ["a"] * 9
-    resp = game.check_for_drawn()
+    resp = game.check_for_draw()
     assert resp is True
 
 
